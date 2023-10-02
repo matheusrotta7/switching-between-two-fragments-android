@@ -3,6 +3,7 @@ package com.punchy.fragmentclass
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.core.os.bundleOf
 import com.punchy.fragmentclass.fragments.CallsFragment
 import com.punchy.fragmentclass.fragments.ConversationsFragment
 
@@ -27,9 +28,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         callsButton.setOnClickListener {
+            val callsFragment = CallsFragment()
+            callsFragment.arguments = bundleOf(
+                "user" to "matheus",
+                "region" to "Brazil",
+                "cellphone" to "(19) 99193-8483"
+            )
+
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.fragment_content, CallsFragment())
+                .replace(R.id.fragment_content, callsFragment)
                 .commit()
         }
 
