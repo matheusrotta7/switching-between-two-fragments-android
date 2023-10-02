@@ -6,10 +6,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.punchy.fragmentclass.R
 
 class ConversationsFragment  : Fragment() {
+
+    private lateinit var editName: TextView
+    private lateinit var resultText: TextView
+    private lateinit var executeButton: Button
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -32,6 +38,14 @@ class ConversationsFragment  : Fragment() {
             container,
             false
         )
+
+        editName = view.findViewById(R.id.nameEdit)
+        resultText = view.findViewById(R.id.nameText)
+        executeButton = view.findViewById(R.id.executeButton)
+
+        executeButton.setOnClickListener {
+            resultText.text = editName.text
+        }
 
 //        view.findViewById<Button>()
         //Processamento de visualizacao
